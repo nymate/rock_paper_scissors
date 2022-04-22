@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rock paper scissors</title>
+</head>
+<body>
+    <script>
+       
+
+
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+
+        }
+
+function computerPlay() {        
+        let result=getRndInteger(1,3)
+
+        if(result===1){
+            return ("kő")
+        }
+        else if(result===2){
+            return ("papír")
+        }
+        else{
+            return ("olló")
+        }      
+    }
+
+    let computerSelection = computerPlay()
+    console.log(computerSelection)
+    
+    function roundOne() {
+        let abc = ("kő");
+        let bca = ("papír");
+        let cba = ("olló");
+
+        if (computerSelection===abc) {
+        console.log("Draw!");
+        }
+        else if (computerSelection===bca) {
+        console.log("blablabla");
+        }
+        else if (computerSelection===cba) {
+        console.log("dasdadadas");    
+        }
+        else {
+            console.log("wewtewqtqwt")
+        }
+    }
+
+    roundOne()
+
+    </script>   
+</body>
+</html>
