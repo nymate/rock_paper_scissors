@@ -27,8 +27,30 @@ function computerPlay() {
             return ("olló")
         }      
     }
-    console.log(computerPlay());
- 
+
+    let computerSelection = computerPlay()
+    console.log(computerSelection)
+    
+    function roundOne() {
+        let abc = ("kő");
+        let bca = ("papír");
+        let cba = ("olló");
+
+        if (computerSelection===abc) {
+        console.log("Draw!");
+        }
+        else if (computerSelection===bca) {
+        console.log("blablabla");
+        }
+        else if (computerSelection===cba) {
+        console.log("dasdadadas");    
+        }
+        else {
+            console.log("wewtewqtqwt")
+        }
+    }
+
+    roundOne()
 
     </script>   
 </body>
