@@ -28,10 +28,10 @@ function computerPlay() {
         }      
     }
 
-    const computerSelection = computerPlay()
-    console.log(computerSelection)
+    
        
     function playRound(playerSelection, computerSelection) {
+
         if (computerSelection===playerSelection) {
             return("Draw!")
         }    
@@ -53,14 +53,29 @@ function computerPlay() {
         else if (computerSelection==="scissors" && playerSelection==="paper") {
             return("Scissors beats paper! You lose!")
         }
+
+        
     }
-  
+    
+    
+    
 
-    let userInput = prompt("Rock, paper, scissors. What is your choice?","");
-    const playerSelection = userInput.toLowerCase();
-    console.log(playRound(playerSelection, computerSelection));
+    function game() {
+        let userInput = prompt("Rock, paper, scissors. What is your choice?","");
+        const playerSelection = userInput.toLowerCase();
+        const computerSelection = computerPlay()
+        playRound(playerSelection, computerSelection); 
+    
+        console.log(computerSelection)
+        console.log(playRound(playerSelection, computerSelection));
+    }
 
-
+    for (let i = 0; i < 5; i++) {
+    game()
+    }
+        
+    
+    
 
     </script>   
 </body>
