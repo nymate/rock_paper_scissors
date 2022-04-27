@@ -6,8 +6,9 @@
 </head>
 <body>
     <script>
-       
-
+  
+let a = 0;
+let b = 0;
 
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1) ) + min;
@@ -27,23 +28,21 @@ function computerPlay() {
             return ("scissors")
         }      
     }
-
-    const computerSelection = computerPlay()
-    console.log(computerSelection)
        
     function playRound(playerSelection, computerSelection) {
+
         if (computerSelection===playerSelection) {
-            return("Draw!")
+            return("Same choice from the computer. Draw!")
         }    
         else if (computerSelection==="rock" && playerSelection==="paper") {
-            return("Paper beats rock! You win!")
+            return("Paper beats rock! You win!");    
         }
         else if (computerSelection==="rock" && playerSelection==="scissors") {
             return("Rock beats scissors! You lose!")
         }
         else if (computerSelection==="paper" && playerSelection==="scissors") {
             return("Scissors beats paper! You win!")
-        }
+        }     
         else if (computerSelection==="paper" && playerSelection==="rock") {
             return("Paper beats rock! You lose!")
         }
@@ -54,14 +53,49 @@ function computerPlay() {
             return("Scissors beats paper! You lose!")
         }
     }
-  
 
-    let userInput = prompt("Rock, paper, scissors. What is your choice?","");
-    const playerSelection = userInput.toLowerCase();
-    console.log(playRound(playerSelection, computerSelection));
+    function score(playerSelection, computerSelection) {
 
+        if (computerSelection===playerSelection) {
+            return((a += 1)+":"+(b += 1));
+        }    
+        else if (computerSelection==="rock" && playerSelection==="paper") {
+            return(a+":"+(b += 1));  
+        }
+        else if (computerSelection==="rock" && playerSelection==="scissors") {
+            return((a += 1)+":"+b);
+        }
+        else if (computerSelection==="paper" && playerSelection==="scissors") {
+            return(a+":"+(b += 1));
+        }            
+        else if (computerSelection==="paper" && playerSelection==="rock") {
+            return((a += 1)+":"+b);
+        }
+        else if (computerSelection==="scissors" && playerSelection==="rock") {
+            return(a+":"+(b += 1));
+        }
+        else if (computerSelection==="scissors" && playerSelection==="paper") {
+            return((a += 1)+":"+b);
+        }    
+    }
+    
+    function game() {
+        let userInput = prompt("Rock, paper, scissors. What is your choice?","");
+        const playerSelection = userInput.toLowerCase();
+        const computerSelection = computerPlay()
+        playRound(playerSelection, computerSelection); 
+    
+        console.log(computerSelection)
+        console.log(playRound(playerSelection, computerSelection));
+        console.log(score(playerSelection, computerSelection));
+    }
 
-
+    for (let i = 0; i < 5; i++) {
+    game()
+    } 
+    
+    //console.log("The final score is "+a+":"+b);
+        
     </script>   
 </body>
 </html>
