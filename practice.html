@@ -51,6 +51,9 @@
         else if (computerSelection==="scissors" && playerSelection==="paper") {
             return("Scissors beats paper! You lose!")
         }
+        else {
+            return("Wrong expression. Only 'rock', 'paper' or 'scissors' are acceptable.")
+        }
     }
 
     function score(playerSelection, computerSelection) {
@@ -104,7 +107,7 @@
             console.log("Draw game! The final score is "+computerScore+":"+userScore+".")
         }         
     }
-    
+
     finalScore()
 
     </script>   
