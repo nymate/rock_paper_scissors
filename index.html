@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Rock-paper-scissors</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>ROCK-PAPER-SCISSORS</h1>
+    <div id="options">
+        <button id="rock">ROCK</button>
+        <button id="paper">PAPER</button>
+        <button id="scissors">SCISSORS</button>
+    </div>
+<div id="container"></div>
+
     <script>
   
     let computerScore = 0;
@@ -78,35 +87,46 @@
         }    
     }
     
-    function game() {
-        let userInput = prompt("Rock, paper, scissors. What is your choice?","");
-        const playerSelection = userInput.toLowerCase();
-        const computerSelection = computerPlay()
-        playRound(playerSelection, computerSelection); 
-        //console.log(computerSelection)
+    function finalResult() {
+        const container = document.querySelector('#container');
+        const contentTwo = document.createElement('div');
+        container.appendChild(contentTwo);
 
-        console.log(playRound(playerSelection, computerSelection));
-        console.log(score(playerSelection, computerSelection));
-    }
-
-    for (let i = 0; i < 5; i++) {
-    game()
-    } 
-    
-    function finalScore() {
-        if (computerScore>userScore) {
-            console.log("You lost! The final score is "+computerScore+":"+userScore+" for the computer.")  
+        if(computerScore>userScore){
+            contentTwo.textContent = "You lost! The final score is "+computerScore+":"+userScore+" for the computer.";        
         }
-        else if (computerScore<userScore) {
-            console.log("Congratulations, you won! The final score is "+userScore+":"+computerScore+".")
+        else if(computerScore<userScore){
+            contentTwo.textContent = "Congratulations, you won! The final score is "+userScore+":"+computerScore+".";
         }
-        else  {
-            console.log("Draw game! The final score is "+computerScore+":"+userScore+".")
-        }         
+        else{
+            contentTwo.textContent = "Draw game! The final score is "+computerScore+":"+userScore+".";
+        }
     }
+ 
+    let count = 0;
+    const buttons = document.querySelectorAll('button');
     
-    finalScore()
+    buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+        playerSelection=btn.id;
+        const computerSelection = computerPlay();
+        const container = document.querySelector('#container');
+        const content = document.createElement('div');
+        content.textContent = (`${playRound(playerSelection, computerSelection)} ${score(playerSelection,computerSelection)}`);  
+        container.appendChild(content);
 
+        if(count > 3){
+            finalResult();
+            computerScore = 0;
+            userScore = 0;
+            count = 0;
+        }
+        else{
+            count++;
+        }
+        });
+    });
+          
     </script>   
 </body>
 </html>
